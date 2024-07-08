@@ -1,0 +1,14 @@
+Informational Responses: Codes 100 to 199
+Successful Responses: Codes 200 to 299
+Redirection Messages: Codes 300 to 399
+Client Error Responses: Codes 400 to 499
+Server Error Responses: Codes 500 to 599
+
+---------------- What We Are Using This Project ----------------
+100 --> continue                         400 --> bad Request
+102 --> processing                       401 --> unauthorize
+200 --> Ok                               402 --> payment required
+201 --> Created                          404 --> Not found
+202 --> accepted                         500 --> Internal Server Error
+307 --> temporaray Redirect              504 --> Gateway time out
+308 --> permanet Redirect
