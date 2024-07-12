@@ -31,7 +31,11 @@ app.use(
 app.use(express.static("public"));
 app.use(cookieParser());
 
-app.get("/", (req, res) => {
-  res.send("hello taufik how are you");
-});
+/**
+ * import routes from index.routes.js
+ */
+
+import { router } from "./Routes/index.routes.js";
+app.use(router);
+
 export { app };
