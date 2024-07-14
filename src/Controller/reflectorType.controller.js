@@ -12,7 +12,7 @@ const reflectorTypeController = asyncHandler(async (req, res, next) => {
   if (!Title) {
     return res
       .status(400)
-      .json(new ApiResponse(200, null, `ReflectorType ${Title} is Missing `));
+      .json(new ApiResponse(400, null, `ReflectorType ${Title} is Missing `));
   }
 
   /**
