@@ -1,9 +1,9 @@
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
-import { beamAngleListModel } from "../Model/BeamAngle.model.js";
+import { cctModel } from "../Model/Cct.model.js";
 
-const beamAngleController = asyncHandler(async (req, res, next) => {
+const cctListController = asyncHandler(async (req, res, next) => {
   const { Title } = req.body;
 
   /**
@@ -12,37 +12,33 @@ const beamAngleController = asyncHandler(async (req, res, next) => {
   if (!Title) {
     return res
       .status(400)
-      .json(new ApiResponse(400, null, `${Title} is Missing `));
+      .json(new ApiResponse(200, null, `cct ${Title} is Missing `));
   }
 
   /**
    * todo : Check is beamangle Title is  already exist
    * @method: mongoose.find({Title:Tile})
    */
-  const isExistbeamAngleList = await beamAngleListModel.find({ Title: Title });
-  if (isExistbeamAngleList.length) {
+  const isExistcct = await cctModel.find({ Title: Title });
+  if (isExistcct.length) {
     return res
       .status(400)
-      .json(new ApiError(400, null, `${Title} Ip Title Is Already Exist`));
+      .json(new ApiError(400, null, `CCT ${Title}  Is Already Exist`));
   }
   /**
    * todo : make a new beamAngleListModel
    * @instance new beamAngleListModel
    */
 
-  const beamangleList = await new beamAngleListModel({
+  const cct = await new cctModel({
     Title,
   }).save();
 
   return res
     .status(200)
     .json(
-      new ApiResponse(
-        200,
-        beamangleList,
-        `${Title} Iplist Created Sucessfull is Ok`
-      )
+      new ApiResponse(200, cct, `${Title} Iplist Created Sucessfull is Ok`)
     );
 });
 
-export { beamAngleController };
+export { cctListController };

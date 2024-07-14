@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
 import cookieParser from "cookie-parser";
 const app = express();
 
@@ -28,7 +29,10 @@ app.use(express.json({ limit: process.env.REQUESTED_DATA_SIZE }));
 app.use(
   express.urlencoded({ extended: true, limit: process.env.REQUESTED_DATA_SIZE })
 );
-app.use(express.static("public"));
+
+// Serve static files from the 'public/temp' directory
+app.use(express.static("public/temp"));
+
 app.use(cookieParser());
 
 /**
@@ -36,6 +40,7 @@ app.use(cookieParser());
  */
 
 import { router } from "./Routes/index.routes.js";
+
 app.use(router);
 
 export { app };

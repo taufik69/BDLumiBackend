@@ -27,8 +27,8 @@ const dimmingController = asyncHandler(async (req, res, next) => {
   }
 
   /**
-   * todo : make a new beamAngleListModel
-   * @instance new reflectorTypeModel
+   * todo : make a new dimmingModel
+   * @instance new dimmingModel
    */
 
   const dimming = await new dimmingModel({
