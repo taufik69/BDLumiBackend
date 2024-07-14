@@ -9,7 +9,7 @@ DBConnection()
     app.listen(process.env.PORT || 3000, () => {
       console.log(
         chalk.bgGreenBright(
-          `Server Running on port http://localhost:${process.env.PORT} `
+          `Server Running on port ${process.env.DOMAIN_NAME.split(":").slice(0, 2).join("")}:${process.env.PORT} `
         )
       );
     });
@@ -17,3 +17,4 @@ DBConnection()
   .catch((error) => {
     console.log(chalk.bgRedBright(`MONGODB CONNECTION  ERROR !!! ${err}`));
   });
+console.log();
