@@ -20,7 +20,7 @@ const brandController = asyncHandler(async (req, res) => {
    * todo : chekc a file   is exist
    */
 
-  const BrandImage = req.files?.BrandImage?.[0];
+  const BrandImage = req.files?.BrandImage;
 
   if (!BrandImage) {
     return res
@@ -34,7 +34,7 @@ const brandController = asyncHandler(async (req, res) => {
    */
 
   const isExistbrandModel = await brandModel.find({
-    $or: [{ BrandName }, { BrandImage: BrandImage.filename }],
+    $or: [{ BrandName }, { BrandImage: BrandImage[0].filename }],
   });
   console.log(isExistbrandModel);
 
@@ -45,7 +45,7 @@ const brandController = asyncHandler(async (req, res) => {
         new ApiError(
           400,
           null,
-          `${BrandName} or ${BrandImage.filename} Title Is Already Exist`
+          `${BrandName} or ${BrandImage[0].filename} Title Is Already Exist`
         )
       );
   }
@@ -56,7 +56,7 @@ const brandController = asyncHandler(async (req, res) => {
    */
   const brand = await new brandModel({
     BrandName,
-    BrandImage: `${process.env.DOMAIN_NAME}/${BrandImage.filename}`,
+    BrandImage: `${process.env.DOMAIN_NAME}/${req.headers["x-uploaddestination"]}/${BrandImage[0].filename}`,
   }).save();
 
   return res
