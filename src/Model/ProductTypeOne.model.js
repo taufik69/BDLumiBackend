@@ -9,15 +9,15 @@ const productTypeOneSchema = new Schema(
       index: true,
       lowercase: true,
     },
-    productCatagory: {
+    productOneCatagory: {
       type: Schema.Types.ObjectId,
-      ref: "Catagory",
+      ref: "catagory",
     },
   },
   { timestamps: true }
 );
 
-export const productTypeOne = mongoose.model(
+export const productTypeOneModel = mongoose.model(
   "productTypeOne",
   productTypeOneSchema
 );
