@@ -5,7 +5,7 @@ router.use(process.env.BASE_API, apiRoutes);
 router.use(process.env.BASE_API, (req, res) => {
   res.status(400).json({
     sucess: false,
-    message: "Route Invalid",
+    message: "Route Invalid !!!",
   });
 });
 export { router };

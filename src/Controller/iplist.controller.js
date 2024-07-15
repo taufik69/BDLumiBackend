@@ -41,4 +41,9 @@ const ipListController = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { ipListController };
+const getAllIpist = asyncHandler(async (req, res) => {
+  const AlldiIpList = await ipModel.find({});
+  return res.status(200).json(new ApiResponse(200, AlldiIpList));
+});
+
+export { ipListController, getAllIpist };

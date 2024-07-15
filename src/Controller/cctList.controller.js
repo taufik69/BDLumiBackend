@@ -40,5 +40,8 @@ const cctListController = asyncHandler(async (req, res, next) => {
       new ApiResponse(200, cct, `${Title} Iplist Created Sucessfull is Ok`)
     );
 });
-
-export { cctListController };
+const getAllcctList = asyncHandler(async (req, res) => {
+  const Allcct = await cctModel.find({});
+  return res.status(200).json(new ApiResponse(200, Allcct));
+});
+export { cctListController, getAllcctList };

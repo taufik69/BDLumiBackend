@@ -50,4 +50,9 @@ const catagoryContoller = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { catagoryContoller };
+const getAllCatagory = asyncHandler(async (req, res) => {
+  const getCategory = await CatagoryModel.find({});
+  return res.status(200).json(new ApiResponse(200, getCategory));
+});
+
+export { catagoryContoller, getAllCatagory };

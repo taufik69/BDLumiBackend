@@ -46,4 +46,9 @@ const reflectorTypeController = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { reflectorTypeController };
+const getreflectorTypeList = asyncHandler(async (req, res) => {
+  const AllreflectorTypeList = await reflectorTypeModel.find({});
+  return res.status(200).json(new ApiResponse(200, AllreflectorTypeList));
+});
+
+export { reflectorTypeController, getreflectorTypeList };

@@ -64,4 +64,8 @@ const brandController = asyncHandler(async (req, res) => {
     .json(new ApiResponse(200, brand, `${BrandName} brand Created Sucessfull`));
 });
 
-export { brandController };
+const getAllBrand = asyncHandler(async (req, res) => {
+  const AllBrand = await brandModel.find({});
+  return res.status(200).json(new ApiResponse(200, AllBrand));
+});
+export { brandController, getAllBrand };

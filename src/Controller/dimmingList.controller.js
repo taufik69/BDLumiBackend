@@ -42,4 +42,9 @@ const dimmingController = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { dimmingController };
+const getAllDimmingList = asyncHandler(async (req, res) => {
+  const AlldimmingList = await dimmingModel.find({});
+  return res.status(200).json(new ApiResponse(200, AlldimmingList));
+});
+
+export { dimmingController, getAllDimmingList };

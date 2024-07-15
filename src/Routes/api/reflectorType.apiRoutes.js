@@ -1,7 +1,13 @@
 import { Router } from "express";
 const router = Router();
-import { reflectorTypeController } from "../../Controller/reflectorType.controller.js";
+import {
+  getreflectorTypeList,
+  reflectorTypeController,
+} from "../../Controller/reflectorType.controller.js";
 
-router.route("/reflector").post(reflectorTypeController);
+router
+  .route("/reflector")
+  .post(reflectorTypeController)
+  .get(getreflectorTypeList);
 
 export default router;

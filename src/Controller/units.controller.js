@@ -48,4 +48,9 @@ const unitsController = asyncHandler(async (req, res, next) => {
     .json(new ApiResponse(200, unit, "unit Created Sucessfull is Ok"));
 });
 
-export { unitsController };
+const getAllUnits = asyncHandler(async (req, res) => {
+  const AllUnits = await unitModel.find({});
+  return res.status(200).json(new ApiResponse(200, AllUnits));
+});
+
+export { unitsController, getAllUnits };

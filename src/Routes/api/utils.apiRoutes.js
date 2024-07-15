@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { unitsController } from "../../Controller/units.controller.js";
+import {
+  getAllUnits,
+  unitsController,
+} from "../../Controller/units.controller.js";
 const router = Router();
 
-router.route("/units").post(unitsController);
+router.route("/units").post(unitsController).get(getAllUnits);
 
 export default router;

@@ -45,4 +45,9 @@ const beamAngleController = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { beamAngleController };
+const getAllbeamAngle = asyncHandler(async (req, res) => {
+  const beamAngle = await beamAngleListModel.find({});
+  return res.status(200).json(new ApiResponse(200, beamAngle));
+});
+
+export { beamAngleController, getAllbeamAngle };

@@ -1,7 +1,10 @@
 import { Router } from "express";
-import { cctListController } from "../../Controller/cctList.controller.js";
+import {
+  cctListController,
+  getAllcctList,
+} from "../../Controller/cctList.controller.js";
 const router = Router();
 
-router.route("/cc").post(cctListController);
+router.route("/cct").post(cctListController).get(getAllcctList);
 
 export default router;

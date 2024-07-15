@@ -1,10 +1,13 @@
 import { Router } from "express";
-import { brandController } from "../../Controller/brand.controller.js";
 import { upload } from "../../middleware/multer.middleware.js";
 import { multerError } from "../../utils/MulterError.js";
 import { setUploadDestination } from "../../middleware/setUploadDestination.middleware.js";
-const router = Router();
+import {
+  brandController,
+  getAllBrand,
+} from "../../Controller/brand.controller.js";
 
+const router = Router();
 router
   .route("/brand")
   .post(
@@ -12,6 +15,7 @@ router
     upload.fields([{ name: "BrandImage", maxCount: 1 }]),
     multerError,
     brandController
-  );
+  )
+  .get(getAllBrand);
 
 export default router;

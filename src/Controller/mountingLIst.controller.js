@@ -42,4 +42,8 @@ const mountingListController = asyncHandler(async (req, res, next) => {
     );
 });
 
-export { mountingListController };
+const getAllMountingList = asyncHandler(async (req, res) => {
+  const AlldimountingList = await mountingModel.find({});
+  return res.status(200).json(new ApiResponse(200, AlldimountingList));
+});
+export { mountingListController, getAllMountingList };
