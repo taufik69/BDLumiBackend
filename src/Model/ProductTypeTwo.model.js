@@ -17,7 +17,7 @@ const productTypeTwoSchema = new Schema(
   { timestamps: true }
 );
 
-export const productTypeTwo = mongoose.model(
+export const productTypeTwoModel = mongoose.model(
   "productTypeTwo",
   productTypeTwoSchema
 );
