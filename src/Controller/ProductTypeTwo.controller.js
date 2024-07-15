@@ -3,24 +3,24 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { productTypeTwoModel } from "../Model/ProductTypeTwo.model.js";
 const productTypeTwoController = asyncHandler(async (req, res) => {
-  const { Title, productSubCatagory } = req.body;
+  const { Title, productTypeOne } = req.body;
 
   if (!Title) {
     return res
       .status(400)
       .json(new ApiError(400, null, ` ProductTypeTwo Title   is Missing `));
   }
-  if (!productSubCatagory) {
+  if (!productTypeOne) {
     return res
       .status(400)
-      .json(new ApiError(400, null, ` productSubCatagory   is Missing `));
+      .json(new ApiError(400, null, ` productTypeOne   is Missing `));
   }
 
   /**
    * todo : found if  productTypeOne is Exist or not
    */
   const isExistProductTypeTwo = await productTypeTwoModel.find({
-    $or: [{ Title }, { productSubCatagory }],
+    $or: [{ Title }, { productTypeOne }],
   });
 
   if (isExistProductTypeTwo.length) {
@@ -30,7 +30,7 @@ const productTypeTwoController = asyncHandler(async (req, res) => {
         new ApiError(
           400,
           null,
-          `${Title} or ${productSubCatagory}  Is Already Exist`
+          `${Title} or ${productTypeOne}  Is Already Exist`
         )
       );
   }
@@ -41,7 +41,7 @@ const productTypeTwoController = asyncHandler(async (req, res) => {
 
   const productTypeTwo = await new productTypeTwoModel({
     Title,
-    productSubCatagory,
+    productTypeOne,
   }).save();
   return res
     .status(200)
@@ -57,7 +57,7 @@ const productTypeTwoController = asyncHandler(async (req, res) => {
 const getProuductTypeTwoController = asyncHandler(async (req, res) => {
   const getAllProductTypeOneController = await productTypeTwoModel
     .find({})
-    .populate("productSubCatagory");
+    .populate("productTypeOne");
 
   return res
     .status(200)

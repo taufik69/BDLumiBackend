@@ -9,7 +9,7 @@ const productTypeTwoSchema = new Schema(
       index: true,
       lowercase: true,
     },
-    productSubCatagory: {
+    productTypeOne: {
       type: Schema.Types.ObjectId,
       ref: "productTypeOne",
     },
