@@ -1,13 +1,23 @@
 import multer from "multer";
-import { multerError } from "../utils/MulterError.js";
-import { ApiError } from "../utils/ApiError.js";
+import fs from "fs";
+import path from "path";
+import chalk from "chalk";
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "./public/temp");
+    const finalPath = path.join("./public/temp/", req.UploadDesnitation);
+
+    fs.mkdir(finalPath, { recursive: true }, (err) => {
+      if (err) {
+        console.log(
+          chalk.bgRedBright("Multer file upload Path making failed", err)
+        );
+      }
+      cb(null, `${finalPath}`);
+    });
   },
   filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 10);
-    cb(null, file.originalname);
+    cb(null, `${file.originalname}`);
   },
 });
 
@@ -15,11 +25,17 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 50 * 1024 * 1024 }, // 50 MB limit
   fileFilter: (req, file, cb) => {
-    const allowedFileTypes = ["image/jpeg", "image/png", "image/gif"];
+    const allowedFileTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/gif",
+      "image/jpg",
+    ];
     if (!allowedFileTypes.includes(file.mimetype)) {
       return cb(new multer.MulterError("Invalid file format"), false);
     }
     cb(null, true);
   },
 });
+
 export { upload };

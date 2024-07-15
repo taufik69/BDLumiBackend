@@ -13,7 +13,7 @@ const brandController = asyncHandler(async (req, res) => {
   if (!BrandName) {
     return res
       .status(400)
-      .json(new ApiResponse(400, null, `Brand Title  is Missing `));
+      .json(new ApiError(400, null, `Brand Title  is Missing `));
   }
 
   /**
