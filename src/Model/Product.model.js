@@ -5,7 +5,7 @@ const productSchema = new Schema(
     productItemCode: {
       type: String,
       trim: true,
-      required: [true, "Missing product"],
+      required: [true, "Missing productItemCode"],
       unique: true,
     },
     productImages: {

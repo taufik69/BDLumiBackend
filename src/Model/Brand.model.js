@@ -5,7 +5,7 @@ const brandSchema = new Schema(
     BrandName: {
       type: String,
       trim: true,
-      required: [true, "Missing Brand Crendential"],
+      required: [true, "Missing BrandName"],
       lowercase: true,
     },
     BrandImage: {
