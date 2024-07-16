@@ -4,7 +4,7 @@ const CatagorySchema = new Schema(
   {
     Title: {
       type: String,
-      required: [true, "Missing CT Crendential"],
+      required: [true, "Missing CT TiTle"],
       trim: true,
       index: true,
       lowercase: true,

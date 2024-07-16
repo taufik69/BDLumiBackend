@@ -25,6 +25,7 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 50 * 1024 * 1024 }, // 50 MB limit
   fileFilter: (req, file, cb) => {
+    console.log("file.fieldname from fileFilter", file.fieldname);
     const allowedFileTypes = [
       "image/jpeg",
       "image/png",

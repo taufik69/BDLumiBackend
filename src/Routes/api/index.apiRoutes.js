@@ -10,6 +10,7 @@ import brandRoutes from "./brand.apiRoutes.js";
 import catagoryRoutes from "./catagory.apiRoutes.js";
 import productTypeOneRoutes from "./productTypeOne.apiRoutes.js";
 import productTypeTwoRoutes from "./productTypeTwo.apiRoutes.js";
+import productRoutes from "./product.apiRoutes.js";
 const router = Router();
 router.use(process.env.CONPANY_NAME_ROUTE, utilsRoutes);
 router.use(process.env.CONPANY_NAME_ROUTE, iplistRoutes);
@@ -20,6 +21,8 @@ router.use(process.env.CONPANY_NAME_ROUTE, dimmingListRoutes);
 router.use(process.env.CONPANY_NAME_ROUTE, ccListRoutes);
 router.use(process.env.CONPANY_NAME_ROUTE, brandRoutes);
 router.use(process.env.CONPANY_NAME_ROUTE, catagoryRoutes);
+router.use(process.env.CONPANY_NAME_ROUTE, productTypeOneRoutes);
 router.use(process.env.CONPANY_NAME_ROUTE, productTypeTwoRoutes);
+router.use(process.env.CONPANY_NAME_ROUTE, productRoutes);
 
 export default router;

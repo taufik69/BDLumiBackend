@@ -30,9 +30,15 @@ const catagoryContoller = asyncHandler(async (req, res, next) => {
   /**
    * *check if catgory Title and Status is already exist
    */
-  // const isExistCatagory = await new CatagoryModel.find({
-  //   $or: [{ Title }, { Status }],
-  // });
+  const isExistCatagory = await new CatagoryModel.find({
+    $or: [{ Title }, { Status }],
+  });
+
+  if (isExistCatagory.length) {
+    return res
+      .status(400)
+      .json(new ApiError(400, null, `${Title} or ${Status} is Already Exist `));
+  }
 
   /**
    * todo : crate a catgory in catgory field

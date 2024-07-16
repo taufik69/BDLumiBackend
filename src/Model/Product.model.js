@@ -5,7 +5,7 @@ const productSchema = new Schema(
     productItemCode: {
       type: String,
       trim: true,
-      required: [true, "Missing product Crendential"],
+      required: [true, "Missing product"],
       lowercase: true,
     },
     productImages: {
@@ -20,7 +20,7 @@ const productSchema = new Schema(
     },
     productCatagory: {
       type: Schema.Types.ObjectId,
-      ref: "Catagory",
+      ref: "catagory",
     },
     productTypeOne: {
       type: Schema.Types.ObjectId,
@@ -87,9 +87,7 @@ const productSchema = new Schema(
     ProductTA: {
       type: Number,
     },
-    productTa: {
-      type: Number,
-    },
+
     productTHD: {
       type: Number,
     },
@@ -134,6 +132,10 @@ const productSchema = new Schema(
       trim: true,
     },
     productOthers: {
+      type: String,
+      trim: true,
+    },
+    productItemqrcode: {
       type: String,
       trim: true,
     },
