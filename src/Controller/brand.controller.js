@@ -21,7 +21,7 @@ const brandController = asyncHandler(async (req, res) => {
    */
 
   const BrandImage = req.files?.BrandImage;
-  console.log(BrandImage);
+
   if (!BrandImage) {
     return res
       .status(400)
