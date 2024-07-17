@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config({ path: "/.env" });
+dotenv.config();
 import { DBConnection } from "./Database/index.js";
 import { app } from "./app.js";
 import chalk from "chalk";
@@ -17,4 +17,3 @@ DBConnection()
   .catch((error) => {
     console.log(chalk.bgRedBright(`MONGODB CONNECTION  ERROR !!! ${err}`));
   });
-console.log();
