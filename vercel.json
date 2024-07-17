@@ -11,5 +11,8 @@
       "src": "/(.*)",
       "dest": "src/index.js"
     }
-  ]
+  ],
+  "static": {
+    "public/temp": "/public/temp"
+  }
 }
