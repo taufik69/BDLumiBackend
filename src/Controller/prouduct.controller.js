@@ -25,6 +25,7 @@ const productcontroller = asyncHandler(async (req, res) => {
    */
 
   const productImage = req.files?.productImages;
+  console.log(productImage);
   if (!productImage) {
     return res
       .status(400)
