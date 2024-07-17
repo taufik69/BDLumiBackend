@@ -32,7 +32,6 @@ app.use(
 
 // Serve static files from the 'public/temp' directory
 app.use(express.static("public/temp"));
-
 app.use(cookieParser());
 
 /**
