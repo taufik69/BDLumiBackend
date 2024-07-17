@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "/.env" });
 import { DBConnection } from "./Database/index.js";
 import { app } from "./app.js";
 import chalk from "chalk";
